@@ -1,0 +1,83 @@
+body {
+    background-color: white;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  
+.app-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#lock{
+    background-image: url(assets/lock.png);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    resize:none;
+    width:400px;
+    height:800px;
+}
+
+#btnunl{
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    width: 180px;
+    height: 10px;
+    position: fixed;
+    bottom: 50px;
+    right: 110px;
+}
+
+#origami{
+    display: none;
+    background-image: url(assets/bench.jpg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    resize:none;
+    width:400px;
+    height:800px;
+}
+
+#homes{
+    display: none;
+    background-image: url(assets/home.png);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    resize:none;
+    width:400px;
+    height:800px;
+}
+
+img{
+    height: 250px;
+    width: 250px;
+    margin-top: 50px;
+    margin-left: 17%;
+}
+
+#unltext{
+    display: none;
+    font-size: 30px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    padding-left: 90px;
+}
+
+#wrongtxt{
+    display: none;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 30px;
+}
+
+#filler{
+    padding-top: 200px;
+    padding-left: 80px;
+}
