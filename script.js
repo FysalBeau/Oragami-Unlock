@@ -1,7 +1,8 @@
-function passcode(parent) {
-    parent.remove();
-    $("#origami").show();
-}
+// function passcode(parent) {
+//     parent.remove();
+//     $("#origami").show();
+//     toggleFullscreen();
+// }
 
 let piccounter = 0;
 $("#first").on("click", async function(event) {
@@ -46,3 +47,43 @@ function delay() {
       }, 3000);
     });
 }
+
+
+// Full-Screen Mode Toggle Code (Start)
+function getFullscreenElement() {
+    return (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullscreenElement ||
+      document.msFullscreenElement
+    );
+  }
+  
+  function toggleFullscreen() {
+    if (getFullscreenElement()) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen().catch((e) => {
+        console.log(e);
+      });
+    }
+  }
+let touchstartY = 0;
+let touchendY = 0;
+    
+function checkDirection() {
+  if (touchendY > touchstartY) {
+    parent.remove();
+    $("#origami").show();
+    toggleFullscreen();
+  }
+}
+
+document.addEventListener('touchstart', e => {
+  touchstartY = e.changedTouches[0].screenY;
+})
+
+document.addEventListener('touchend', e => {
+  touchendY = e.changedTouches[0].screenY
+  checkDirection()
+})
