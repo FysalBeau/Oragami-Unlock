@@ -1,8 +1,8 @@
-// function passcode(parent) {
-//     parent.remove();
-//     $("#origami").show();
-//     toggleFullscreen();
-// }
+function passcode(parent) {
+    parent.remove();
+    $("#origami").show();
+    toggleFullscreen();
+}
 
 let piccounter = 0;
 $("#first").on("click", async function(event) {
@@ -68,22 +68,22 @@ function getFullscreenElement() {
       });
     }
   }
-let touchstartY = 0;
-let touchendY = 0;
+// let touchstartY = 0;
+// let touchendY = 0;
     
-function checkDirection() {
-  if (touchendY > touchstartY) {
-    parent.remove();
-    $("#origami").show();
-    toggleFullscreen();
-  }
-}
+// function checkDirection() {
+//   if (touchendY > touchstartY) {
+//     parent.remove();
+//     $("#origami").show();
+//     toggleFullscreen();
+//   }
+// }
 
-document.addEventListener('touchstart', e => {
-  touchstartY = e.changedTouches[0].screenY;
-})
+// document.addEventListener('touchstart', e => {
+//   touchstartY = e.changedTouches[0].screenY;
+// })
 
-document.addEventListener('touchend', e => {
-  touchendY = e.changedTouches[0].screenY
-  checkDirection()
-})
+// document.addEventListener('touchend', e => {
+//   touchendY = e.changedTouches[0].screenY
+//   checkDirection()
+// })
