@@ -1,8 +1,6 @@
-function passcode(parent) {
-    parent.remove();
-    $("#origami").show();
-    toggleFullscreen();
-}
+document.getElementById('lock').addEventListener('swiped-down', function(e) {
+    console.log(e.target); // the element that was swiped
+});
 
 let piccounter = 0;
 $("#first").on("click", async function(event) {
@@ -48,42 +46,33 @@ function delay() {
     });
 }
 
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+                                                     
+var yDown = null;
 
-// Full-Screen Mode Toggle Code (Start)
-function getFullscreenElement() {
-    return (
-      document.fullscreenElement ||
-      document.webkitFullscreenElement ||
-      document.mozFullscreenElement ||
-      document.msFullscreenElement
-    );
-  }
-  
-  function toggleFullscreen() {
-    if (getFullscreenElement()) {
-      document.exitFullscreen();
-    } else {
-      document.documentElement.requestFullscreen().catch((e) => {
-        console.log(e);
-      });
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                                                           
+    yDown = firstTouch.clientY;                                      
+};                                                
+                                                                         
+function handleTouchMove(evt) {
+    if (! yDown ) {
+        return;
     }
-  }
-// let touchstartY = 0;
-// let touchendY = 0;
-    
-// function checkDirection() {
-//   if (touchendY > touchstartY) {
-//     parent.remove();
-//     $("#origami").show();
-//     toggleFullscreen();
-//   }
-// }
 
-// document.addEventListener('touchstart', e => {
-//   touchstartY = e.changedTouches[0].screenY;
-// })
-
-// document.addEventListener('touchend', e => {
-//   touchendY = e.changedTouches[0].screenY
-//   checkDirection()
-// })
+    var yUp = evt.touches[0].clientY;
+    var yDiff = yDown - yUp;
+                                                                         
+    if ( yDiff > 0 ) {
+        $("#lock").remove();
+        $("#origami").show();
+    }                                                             
+    /* reset values */
+    yDown = null;                                             
+};
